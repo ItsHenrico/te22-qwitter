@@ -76,8 +76,9 @@ router.get("/:id/favorite", async (req, res) => {
 
 router.get("/:id/unfavorite", async (req, res) => {
     const id = req.params.id
+    const user_id = 1
 
-    await pool.promise().query('DELETE FROM favorites WHERE tweet_id = ?', [id])
+    await pool.promise().query('DELETE FROM favorites WHERE tweet_id = ? AND user_id = ?', [id, user_id])
     res.redirect("/favorites")
 })
 

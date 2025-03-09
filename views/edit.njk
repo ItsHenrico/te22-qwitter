@@ -4,7 +4,7 @@
 
 <div class="edit">    
     <form action="/edit" method="post">
-      <input type="text" name="message" id="message" value="{{tweet.message}}">
+      <input type="text" name="message" id="message" value="{{tweet.message}}" required maxlength="130">
       <input type="hidden" name="id" id="id" value="{{tweet.id}}">
       <label for="message"></label>
       <button type="submit">Edit</button>
