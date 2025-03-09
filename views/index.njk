@@ -20,17 +20,19 @@
 
             let displayText;
             if (diffInYears > 0) {
-                displayText = `• ${diffInYears} year${diffInYears > 1 ? 's' : ''} ago`;
+                displayText = `${diffInYears} year${diffInYears > 1 ? 's' : ''} ago`;
             } else if (diffInMonths > 0) {
-                displayText = `• ${diffInMonths} month${diffInMonths > 1 ? 's' : ''} ago`;
+                displayText = `${diffInMonths} month${diffInMonths > 1 ? 's' : ''} ago`;
             } else if (diffInDays > 0) {
-                displayText = `• ${diffInDays} day${diffInDays > 1 ? 's' : ''} ago`;
+                displayText = `${diffInDays} day${diffInDays > 1 ? 's' : ''} ago`;
             } else if (diffInHours > 0) {
-                displayText = `• ${diffInHours} hour${diffInHours > 1 ? 's' : ''} ago`;
+                displayText = `${diffInHours} hour${diffInHours > 1 ? 's' : ''} ago`;
             } else if (diffInMinutes > 0) {
-                displayText = `• ${diffInMinutes} minute${diffInMinutes > 1 ? 's' : ''} ago`;
+                displayText = `${diffInMinutes} minute${diffInMinutes > 1 ? 's' : ''} ago`;
+            } else if (diffInSeconds > 0){
+                displayText = `${diffInSeconds} second${diffInSeconds > 1 ? 's' : ''} ago`;
             } else {
-                displayText = `• ${diffInSeconds} second${diffInSeconds > 1 ? 's' : ''} ago`;
+                displayText = `now`;
             }
 
             timeElement.textContent = displayText;
@@ -42,7 +44,7 @@
     <article>
         {% for tweet in tweets %}
         <li>
-            <h2>{{tweet.name}} <time id="time" datetime="{{tweet.edited_at}}">• {{tweet.edited_at}}</time></h2>
+            <h2>{{tweet.name}} <time>• <time id="time" datetime="{{tweet.created_at}}"></time> {%if (tweet.edited) %} (edited <time id="time" datetime="{{tweet.edited_at}}"></time>) {%endif%} </h2></time>
             <div class="message">
                 {{tweet.message}}
             </div>
@@ -53,6 +55,7 @@
                         <li>Share</li>
                         <li><a href="{{tweet.id}}/delete">Delete</a></li>
                         <li><a href="{{tweet.id}}/favorite">Favorite</a></li>
+                        <li><a href="{{tweet.id}}/edit">Edit</a></li>
                     </div class="interact">
                 </ul>
             </footer>
