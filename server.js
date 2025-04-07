@@ -1,6 +1,7 @@
 import "dotenv/config"
 import express from "express"
 import nunjucks from "nunjucks"
+import bcrypt from "bcrypt"
 
 import indexRouter from "./routes/index.js"
 

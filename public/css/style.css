@@ -1,8 +1,17 @@
+:root {
+    --background-color:#202030;
+    --border-color: #404060;
+    --hover-color: #303040;
+    --tweet-hover-color: #282838;
+    --text-color: #8080a0;
+    --white-text-color: #fff;
+}
+
 body {
     margin: 0;
-    color: #ffffff;
+    color: var(--white-text-color);
     font-family: sans-serif;
-    background-color: #101020;
+    background-color: var(--background-color);
 }
 
 main {
@@ -15,24 +24,59 @@ h1{
 
 a{
     text-decoration: none;
-    color: #ffffff;
+    color: var(--white-text-color);
 }
 
 .tweet {
-    width: 50vw;
-    margin-inline: auto;
-    margin-bottom: 1rem;
-    
-    a{
-        text-decoration: none;
-        color: #8080a0;
-    }
+    display: grid;
+    padding: 0;
+    margin: 0;
+    grid-template-columns: 1fr 625px 1fr;
+    grid-template-rows: 1fr;
 
     li {
-        border: 1px solid #404060;
+        border: 1px solid var(--border-color);
         padding-inline: 3rem;
-        padding-bottom: 1rem;
         list-style: none;
+
+        button{
+            display: none;
+        }
+    }
+
+    article {
+        grid-column: 2/3;
+    }
+
+    .postLink {
+        grid-row: 1/2;
+        grid-column: 1/2;
+    }
+
+    li:hover{
+        background-color: var(--tweet-hover-color);
+
+        button {
+            display: block;
+            color: var(--text-color);
+            background-color: inherit;
+            outline: 0;
+            border: 0;
+            padding: 0;
+            margin-right: .4rem;
+            justify-self: right;
+            border-radius: 100%;
+            width: 1.5rem;
+            height: 1.5rem;
+
+            .more{
+                fill: var(--text-color);
+            }
+        }
+    
+        button:hover {
+            background-color: var(--hover-color);
+        }
     }
 
     .interact{
@@ -40,19 +84,30 @@ a{
         margin-inline: 0;
         display: flex;
         justify-content: space-evenly;
-        li{
-            color: #8080a0;
-            border: 0px;
-            padding: 0;
-            display: inline-block;
+        margin-block: .4rem;
+
+        a{
+            text-decoration: none;
+            color: var(--text-color)
         }
 
-        a:hover{
-            color: #a0a0c0;
+        li{
+            color: var(--text-color);
+            padding: 0;
+            border: 0;
+            display: inline-block;
+            border-radius: 5px;
         }
 
         li:hover{
-            color: #a0a0c0;
+            background-color: var(--hover-color);
+        }
+
+        .interactItem{
+            fill: var(--text-color);
+            width: 16px;
+            height: 16px;
+            padding: .3rem;
         }
     }
 
@@ -63,13 +118,13 @@ a{
     }
 
     ul {
-        margin-top: 1rem;
+        margin-top: 0;
         padding-inline: 0;
         gap: 1rem;
     }
 
     time{
-        color: #8080a0;
+        color: var(--text-color);
         font-size: 1rem;
         font-weight: 100;
     }
@@ -78,6 +133,14 @@ a{
         font-size: 1rem;
         margin-top:0.5rem;
         margin-bottom:0.5rem;
+        justify-self: left;
+    }
+
+    .topGrid{
+        display: inline-grid;
+        grid-template-columns: auto auto;
+        align-items: center;
+        width: calc(100% + 3rem);
     }
 }
 
@@ -87,11 +150,11 @@ a{
     
     #post{
         border-radius: 25px;
-        border: 1px solid #404060;
+        border: 1px solid var(--border-color);
         width: 100%;
         padding: 0.5rem;
-        background-color: #101020;
-        color: #ffffff;
+        background-color: var(--background-color);
+        color: var(--white-text-color);
     }
     
     button{
@@ -101,12 +164,12 @@ a{
         padding-inline: 1rem;
         margin-top: 5px;
         font-size: 1rem;
-        color: #fff;
-        background-color: #404060;
+        color: var(--white-text-color);
+        background-color: var(--border-color);
     }
 
     button:hover{
-        background-color: #606080;
+        background-color: var(--hover-color);
     }
 }
 
@@ -116,11 +179,11 @@ a{
     
     #message{
         border-radius: 25px;
-        border: 1px solid #404060;
+        border: 1px solid var(--border-color);
         width: 100%;
         padding: 0.5rem;
-        background-color: #101020;
-        color: #ffffff;
+        background-color: var(--background-color);
+        color: var(--white-text-color);
     }
     
     button{
@@ -130,11 +193,11 @@ a{
         padding-inline: 1rem;
         margin-top: 5px;
         font-size: 1rem;
-        color: #fff;
-        background-color: #404060;
+        color: var(--white-text-color);
+        background-color: var(--border-color);
     }
 
     button:hover{
-        background-color: #606080;
+        background-color: var(--hover-color);
     }
 }

@@ -11,7 +11,7 @@ router.get("/", async (req, res) => {
     const [tweets] = await pool.promise().query("SELECT tweet.*, user.name FROM tweet JOIN user ON tweet.author_id = user.id ORDER BY edited_at DESC")
     res.render("index.njk", {
         title: "Qwitter",
-        tweets: tweets
+        tweets: tweets,
     })
 })
 
