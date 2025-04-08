@@ -13,7 +13,7 @@ await db.exec(`
     message TEXT,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     edited_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    edited INTEGER,
+    edited INTEGER
   );
 `);
 
@@ -21,7 +21,7 @@ await db.exec(`
   CREATE TABLE IF NOT EXISTS user (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT,
-    password TEXT,
+    password TEXT
   );
 `);
 

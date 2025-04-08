@@ -8,7 +8,7 @@ router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
 
 router.get("/", async (req, res) => {
-    const tweets = await db.run("SELECT tweet.*, user.name FROM tweet JOIN user ON tweet.author_id = user.id ORDER BY edited_at DESC")
+    const tweets = db.all("SELECT tweet.*, user.name FROM tweet JOIN user ON tweet.author_id = user.id ORDER BY edited_at DESC")
     res.render("index.njk", {
         title: "Qwitter",
         tweets: tweets,
@@ -19,7 +19,7 @@ router.post("/post", async (req, res) => {
     const post = req.body
     const author_id = 1
 
-    await db.run('INSERT INTO tweet (message, author_id) VALUES (?, 1)', post.post, author_id)
+    db.run('INSERT INTO tweet (message, author_id) VALUES (?, ?)', post.post, author_id)
 
     res.redirect("/")
 })
@@ -32,7 +32,7 @@ router.get("/post", async (req, res) => {
 
 router.get("/:id/edit", async (req, res) => {
     const id = req.params.id
-    const tweet = await db.run('SELECT tweet.* FROM tweet JOIN user ON user.id = tweet.author_id WHERE tweet.id = ?', id)
+    const tweet = db.all('SELECT tweet.* FROM tweet JOIN user ON user.id = tweet.author_id WHERE tweet.id = ?', id)
     res.render("edit.njk", {
         tweet: tweet[0]
     })
@@ -42,14 +42,14 @@ router.post("/edit", async (req, res) =>{
     const message = req.body.message
     const id = req.body.id
     const timestamp = new Date()
-    await db.run('UPDATE tweet SET message = ?, edited_at = ?, edited = TRUE WHERE id = ?', message, timestamp, id)
+    db.run('UPDATE tweet SET message = ?, edited_at = ?, edited = TRUE WHERE id = ?', message, timestamp, id)
     res.redirect("/")
 })
 
 router.get("/:id/delete", async (req, res) => {
     const id = req.params.id
     
-    await db.run('DELETE FROM tweet WHERE id = ?', id)
+    db.run('DELETE FROM tweet WHERE id = ?', id)
     //await db.run('DELETE FROM favorites WHERE tweet_id = ?', id)
     
     res.redirect("/")
