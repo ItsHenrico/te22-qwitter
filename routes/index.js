@@ -8,7 +8,8 @@ router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
 
 router.get("/", async (req, res) => {
-    const tweets = db.all("SELECT tweet.*, user.name FROM tweet JOIN user ON tweet.author_id = user.id ORDER BY edited_at DESC")
+    const tweets = await db.all("SELECT tweet.*, user.name FROM tweet JOIN user ON tweet.author_id = user.id ORDER BY edited_at DESC")
+    console.log(tweets)
     res.render("index.njk", {
         title: "Qwitter",
         tweets: tweets,
