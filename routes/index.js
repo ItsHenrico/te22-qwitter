@@ -9,7 +9,7 @@ router.use(bodyParser.json());
 
 router.get("/", async (req, res) => {
     const tweets = await db.all("SELECT tweet.*, user.name FROM tweet JOIN user ON tweet.author_id = user.id ORDER BY edited_at DESC")
-    console.log(tweets)
+    //Fixa qweets med enter och tomma
     res.render("index.njk", {
         title: "Qwitter",
         tweets: tweets,
@@ -28,14 +28,19 @@ router.post("/post", async (req, res) => {
 router.get("/post", async (req, res) => {
     res.render("post.njk", {
         title: "Qwitter - Post",
+        header: "Qweet",
+        action: "Post"
     })
 })
 
 router.get("/:id/edit", async (req, res) => {
     const id = req.params.id
-    const tweet = db.all('SELECT tweet.* FROM tweet JOIN user ON user.id = tweet.author_id WHERE tweet.id = ?', id)
-    res.render("edit.njk", {
-        tweet: tweet[0]
+    const tweet = await db.all('SELECT tweet.* FROM tweet JOIN user ON user.id = tweet.author_id WHERE tweet.id = ?', id)
+    console.log(tweet)
+    res.render("post.njk", {
+        tweet: tweet[0],
+        header: "Edit Qweet",
+        action: "Edit",
     })
 })
 
