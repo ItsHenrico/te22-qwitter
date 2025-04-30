@@ -8,7 +8,7 @@
         timeElements.forEach(timeElement => {
             const date = new Date(timeElement.getAttribute("datetime"));
             const now = new Date();
-            const diffInSeconds = Math.floor((now - date) / 1000);
+            const diffInSeconds = Math.floor((now - date - 7200000) / 1000);
             const diffInMinutes = Math.floor(diffInSeconds / 60);
             const diffInHours = Math.floor(diffInMinutes / 60);
             const diffInDays = Math.floor(diffInHours / 24);
@@ -48,7 +48,10 @@
         <li>
             <div class="topGrid">
                 <h2>{{tweet.name}} <time>• <time id="time" datetime="{{tweet.created_at}}"></time>{%if (tweet.edited) %} (edited <time id="time" datetime="{{tweet.edited_at}}"></time>) {%endif%} </h2></time>
-                <button><svg class="more" viewBox="0 -960 960 960"><path d="M480-160q-33 0-56.5-23.5T400-240q0-33 23.5-56.5T480-320q33 0 56.5 23.5T560-240q0 33-23.5 56.5T480-160Zm0-240q-33 0-56.5-23.5T400-480q0-33 23.5-56.5T480-560q33 0 56.5 23.5T560-480q0 33-23.5 56.5T480-400Zm0-240q-33 0-56.5-23.5T400-720q0-33 23.5-56.5T480-800q33 0 56.5 23.5T560-720q0 33-23.5 56.5T480-640Z"/></svg></button>
+                <svg class="more" viewBox="0 -960 960 960"><path d="M480-160q-33 0-56.5-23.5T400-240q0-33 23.5-56.5T480-320q33 0 56.5 23.5T560-240q0 33-23.5 56.5T480-160Zm0-240q-33 0-56.5-23.5T400-480q0-33 23.5-56.5T480-560q33 0 56.5 23.5T560-480q0 33-23.5 56.5T480-400Zm0-240q-33 0-56.5-23.5T400-720q0-33 23.5-56.5T480-800q33 0 56.5 23.5T560-720q0 33-23.5 56.5T480-640Z"/></svg>
+                <div class="popup">
+
+                </div>
             </div>
             <div class="message">
                 {{tweet.message}}
@@ -72,8 +75,20 @@
             <p class="postLinkText">+</p>
         </a>
     </div>
-    
 </ul>
 
+<script>
+    document.querySelectorAll(".more").forEach((element, i)=> {
+        element.addEventListener("click", function () {
+            console.log(`More ${i}`)
+            const popup = document.querySelector(`.popup-${i}`)
+            console.log(popup)
+            popup.style.display = "block"
+        })
+    })
 
+    document.querySelectorAll(".popup").forEach((element, i) => {
+        element.classList.add(`popup-${i}`)
+    })
+</script>
 {% endblock %}

@@ -52,7 +52,7 @@ main {
         grid-column: 4 / 5;
         transition: all .25s;
     }
-    
+
     .login {
         margin-inline: 1rem;
         color: var(--white-text-color);
@@ -134,37 +134,17 @@ main {
         }
     }
 
-    @media (max-width: 1000px){
-        .postLinkContainer, .postLink, .postLinkText {
+    @media (max-width: 1000px) {
+
+        .postLinkContainer,
+        .postLink,
+        .postLinkText {
             display: none
         }
     }
 
     li:hover {
         background-color: var(--tweet-hover-color);
-
-        button {
-            display: block;
-            color: var(--text-color);
-            background-color: inherit;
-            outline: 0;
-            border: 0;
-            padding: 0;
-            margin-right: .4rem;
-            justify-self: right;
-            border-radius: 100%;
-            width: 1.5rem;
-            height: 1.5rem;
-            transition: all .25s;
-
-            .more {
-                fill: var(--text-color);
-            }
-        }
-
-        button:hover {
-            background-color: var(--hover-color);
-        }
     }
 
     .interact {
@@ -228,8 +208,35 @@ main {
     .topGrid {
         display: inline-grid;
         grid-template-columns: auto auto;
+        grid-template-rows: 2rem;
         align-items: center;
         width: calc(100% + 3rem);
+
+        .popup {
+            display: none;
+            grid-area: 1 / 2 / 2 / 3;
+            background-color: #0f0;
+            width: 50px;
+            height: 50px;
+            z-index: 2;
+            justify-self: right;
+        }
+
+        .more {
+            grid-area: 1 / 2 / 2 / 3;
+            z-index: 0;
+            fill: var(--text-color);
+            margin-right: .4rem;
+            justify-self: right;
+            border-radius: 100%;
+            width: 1.5rem;
+            height: 1.5rem;
+            transition: all .25s;
+        }
+
+        .more:hover {
+            background-color: var(--hover-color);
+        }
     }
 }
 
@@ -237,7 +244,7 @@ main {
     margin-top: 7rem;
     width: 500px;
     margin-inline: auto;
-    
+
     #post {
         font-family: sans-serif;
         font-size: 1rem;

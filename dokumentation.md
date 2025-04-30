@@ -22,3 +22,14 @@ Den tar bara bort den från både favorites och tweet databasen.
 Det är samma som delete fast bara för favorites.
 ### Säkerhet
 Alla mina SQL-frågor har en parametisering så det blir svårare att göra SQL injections och XSS. Jag ser också till att validera att användaren inte kan skicka fel sorts data, tom data eller för lång text i HTML formulären. 
+
+
+
+
+# Slutprojekt Dokumentation
+## 2025-04-28
+Jag har fixat fina knappar till /post, /login och /signup som följer med när jag scrollar
+## 2025-04-29
+Idag har jag fixat så /edit och /post har samma njk fil eftersom de var nästan identiska. Sedan har jag fixat lite med hur de ser ut. Textlådan byter storlek utifrån hur mycket text som står i den. Jag fixade också att tiden ljög för mig och var i +0000 trots att den sa att den var +0200.
+## 2025-04-30
+Jag har fixat så att en grön kvadrat kommer fram när jag klickar på "mer" knappen. Detta fungerar genom att jag ger den en unik klass som varje mer knapp kommer att ändra display värde på. 
