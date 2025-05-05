@@ -213,13 +213,43 @@ main {
         width: calc(100% + 3rem);
 
         .popup {
+            margin-top: 25px;
+            margin-left: 25px;
             display: none;
+            position: relative;
             grid-area: 1 / 2 / 2 / 3;
-            background-color: #0f0;
             width: 50px;
             height: 50px;
             z-index: 2;
             justify-self: right;
+            grid-template-columns: auto;
+
+            li {
+                background-color: var(--background-color);
+                padding: 0;
+                width: 200px;
+                
+                a {
+                    display: grid;
+                    align-items: center;
+                    grid-template-columns: auto 1fr;
+                    text-decoration: none;
+                    color: var(--white-text-color);
+                    
+                    .interactItem {
+                        fill: var(--white-text-color);
+                        width: 16px;
+                        height: 16px;
+                        padding: .3rem;
+                    }
+                    .interactText {
+                        justify-self: left;
+                    }
+                }
+
+            }
+
+            
         }
 
         .more {
