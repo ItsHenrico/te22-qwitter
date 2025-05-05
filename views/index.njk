@@ -14,7 +14,7 @@
             const diffInDays = Math.floor(diffInHours / 24);
             const diffInWeeks = Math.floor(diffInDays / 7);
             let diffInMonths = (now.getMonth() + (now.getYear() * 12)) - (date.getMonth() + (date.getYear() * 12))
-            if (now.getDate() < date.getDate()){
+            if (now.getDate() < date.getDate()) {
                 diffInMonths--
             }
             const diffInYears = Math.floor(diffInMonths / 12);
@@ -32,7 +32,7 @@
                 displayText = `${diffInHours}h`;
             } else if (diffInMinutes > 0) {
                 displayText = `${diffInMinutes}m`;
-            } else if (diffInSeconds > 0){
+            } else if (diffInSeconds > 0) {
                 displayText = `${diffInSeconds}s`;
             } else {
                 displayText = `now`;
@@ -45,14 +45,24 @@
 <ul class="tweet">
     <article>
         {% for tweet in tweets %}
-        <li>
+        <li class="indTweet">
             <div class="topGrid">
-                <h2>{{tweet.name}} <time>• <time id="time" datetime="{{tweet.created_at}}"></time>{%if (tweet.edited) %} (edited <time id="time" datetime="{{tweet.edited_at}}"></time>) {%endif%} </h2></time>
-                <svg class="more" viewBox="0 -960 960 960"><path d="M480-160q-33 0-56.5-23.5T400-240q0-33 23.5-56.5T480-320q33 0 56.5 23.5T560-240q0 33-23.5 56.5T480-160Zm0-240q-33 0-56.5-23.5T400-480q0-33 23.5-56.5T480-560q33 0 56.5 23.5T560-480q0 33-23.5 56.5T480-400Zm0-240q-33 0-56.5-23.5T400-720q0-33 23.5-56.5T480-800q33 0 56.5 23.5T560-720q0 33-23.5 56.5T480-640Z"/></svg>
+                <h2>{{tweet.name}} <time>• <time id="time" datetime="{{tweet.created_at}}"></time>{%if (tweet.edited) %}
+                        (edited <time id="time" datetime="{{tweet.edited_at}}"></time>) {%endif%} </h2></time>
+                <svg class="more" viewBox="0 -960 960 960">
+                    <path
+                        d="M480-160q-33 0-56.5-23.5T400-240q0-33 23.5-56.5T480-320q33 0 56.5 23.5T560-240q0 33-23.5 56.5T480-160Zm0-240q-33 0-56.5-23.5T400-480q0-33 23.5-56.5T480-560q33 0 56.5 23.5T560-480q0 33-23.5 56.5T480-400Zm0-240q-33 0-56.5-23.5T400-720q0-33 23.5-56.5T480-800q33 0 56.5 23.5T560-720q0 33-23.5 56.5T480-640Z" />
+                </svg>
                 <div class="popup">
                     <ul>
-                        <li><a href="{{tweet.id}}/delete"><svg class="interactItem" viewBox="0 -960 960 960"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg> <span class="interactText">Edit</span></a></li>
-                        <li><a href="{{tweet.id}}/edit"><svg class="interactItem" viewBox="0 -960 960 960"><path d="M200-200h57l391-391-57-57-391 391v57Zm-80 80v-170l528-527q12-11 26.5-17t30.5-6q16 0 31 6t26 18l55 56q12 11 17.5 26t5.5 30q0 16-5.5 30.5T817-647L290-120H120Zm640-584-56-56 56 56Zm-141 85-28-29 57 57-29-28Z"/></svg> <span class="interactText">Delete</span></a></li>
+                        <li><a href="{{tweet.id}}/edit"><svg class="interactItem" viewBox="0 -960 960 960">
+                                    <path
+                                        d="M200-200h57l391-391-57-57-391 391v57Zm-80 80v-170l528-527q12-11 26.5-17t30.5-6q16 0 31 6t26 18l55 56q12 11 17.5 26t5.5 30q0 16-5.5 30.5T817-647L290-120H120Zm640-584-56-56 56 56Zm-141 85-28-29 57 57-29-28Z" />
+                                </svg> <span class="interactText">Edit</span></a></li>
+                        <li><a href="{{tweet.id}}/delete"><svg class="interactItem" viewBox="0 -960 960 960">
+                                    <path
+                                        d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z" />
+                                </svg> <span class="interactText">Delete</span></a></li>
                     </ul>
                 </div>
             </div>
@@ -62,11 +72,18 @@
             <footer>
                 <ul>
                     <div class="interact">
-                        <li><a href="{{tweet.id}}/"><svg class="interactItem" viewBox="0 -960 960 960"><path d="M680-80q-50 0-85-35t-35-85q0-6 3-28L282-392q-16 15-37 23.5t-45 8.5q-50 0-85-35t-35-85q0-50 35-85t85-35q24 0 45 8.5t37 23.5l281-164q-2-7-2.5-13.5T560-760q0-50 35-85t85-35q50 0 85 35t35 85q0 50-35 85t-85 35q-24 0-45-8.5T598-672L317-508q2 7 2.5 13.5t.5 14.5q0 8-.5 14.5T317-452l281 164q16-15 37-23.5t45-8.5q50 0 85 35t35 85q0 50-35 85t-85 35Zm0-80q17 0 28.5-11.5T720-200q0-17-11.5-28.5T680-240q-17 0-28.5 11.5T640-200q0 17 11.5 28.5T680-160ZM200-440q17 0 28.5-11.5T240-480q0-17-11.5-28.5T200-520q-17 0-28.5 11.5T160-480q0 17 11.5 28.5T200-440Zm480-280q17 0 28.5-11.5T720-760q0-17-11.5-28.5T680-800q-17 0-28.5 11.5T640-760q0 17 11.5 28.5T680-720Zm0 520ZM200-480Zm480-280Z"/></svg></a></li>
-                        <li><a href="{{tweet.id}}/"><svg class="interactItem" viewBox="0 -960 960 960"><path d="M80-80v-720q0-33 23.5-56.5T160-880h640q33 0 56.5 23.5T880-800v480q0 33-23.5 56.5T800-240H240L80-80Zm126-240h594v-480H160v525l46-45Zm-46 0v-480 480Z"/></svg></a></li>
-                        <li><a href="{{tweet.id}}/favorite"><svg class="interactItem" viewBox="0 -960 960 960"><path d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Zm0-108q96-86 158-147.5t98-107q36-45.5 50-81t14-70.5q0-60-40-100t-100-40q-47 0-87 26.5T518-680h-76q-15-41-55-67.5T300-774q-60 0-100 40t-40 100q0 35 14 70.5t50 81q36 45.5 98 107T480-228Zm0-273Z"/></svg></a></li>
-                        <li><a href="{{tweet.id}}/delete"><svg class="interactItem" viewBox="0 -960 960 960"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg></a></li>
-                        <li><a href="{{tweet.id}}/edit"><svg class="interactItem" viewBox="0 -960 960 960"><path d="M200-200h57l391-391-57-57-391 391v57Zm-80 80v-170l528-527q12-11 26.5-17t30.5-6q16 0 31 6t26 18l55 56q12 11 17.5 26t5.5 30q0 16-5.5 30.5T817-647L290-120H120Zm640-584-56-56 56 56Zm-141 85-28-29 57 57-29-28Z"/></svg></a></li>
+                        <li><svg class="interactItem" viewBox="0 -960 960 960">
+                                <path
+                                    d="M680-80q-50 0-85-35t-35-85q0-6 3-28L282-392q-16 15-37 23.5t-45 8.5q-50 0-85-35t-35-85q0-50 35-85t85-35q24 0 45 8.5t37 23.5l281-164q-2-7-2.5-13.5T560-760q0-50 35-85t85-35q50 0 85 35t35 85q0 50-35 85t-85 35q-24 0-45-8.5T598-672L317-508q2 7 2.5 13.5t.5 14.5q0 8-.5 14.5T317-452l281 164q16-15 37-23.5t45-8.5q50 0 85 35t35 85q0 50-35 85t-85 35Zm0-80q17 0 28.5-11.5T720-200q0-17-11.5-28.5T680-240q-17 0-28.5 11.5T640-200q0 17 11.5 28.5T680-160ZM200-440q17 0 28.5-11.5T240-480q0-17-11.5-28.5T200-520q-17 0-28.5 11.5T160-480q0 17 11.5 28.5T200-440Zm480-280q17 0 28.5-11.5T720-760q0-17-11.5-28.5T680-800q-17 0-28.5 11.5T640-760q0 17 11.5 28.5T680-720Zm0 520ZM200-480Zm480-280Z" />
+                            </svg></li>
+                        <li><a href="{{tweet.id}}/"><svg class="interactItem" viewBox="0 -960 960 960">
+                                    <path
+                                        d="M80-80v-720q0-33 23.5-56.5T160-880h640q33 0 56.5 23.5T880-800v480q0 33-23.5 56.5T800-240H240L80-80Zm126-240h594v-480H160v525l46-45Zm-46 0v-480 480Z" />
+                                </svg></a></li>
+                        <li><a href="{{tweet.id}}/favorite"><svg class="interactItem" viewBox="0 -960 960 960">
+                                    <path
+                                        d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Zm0-108q96-86 158-147.5t98-107q36-45.5 50-81t14-70.5q0-60-40-100t-100-40q-47 0-87 26.5T518-680h-76q-15-41-55-67.5T300-774q-60 0-100 40t-40 100q0 35 14 70.5t50 81q36 45.5 98 107T480-228Zm0-273Z" />
+                                </svg></a></li>
                     </div class="interact">
                 </ul>
             </footer>
@@ -81,15 +98,30 @@
 </ul>
 
 <script>
-    document.querySelectorAll(".more").forEach((element, i)=> {
-        element.addEventListener("click", function () {
-            console.log(`More ${i}`)
-            const popup = document.querySelector(`.popup-${i}`)
-            console.log(popup)
-            popup.style.display = "grid"
-        })
+    let isPopup = false
+    document.addEventListener("click", function (e) {
+        const element = document.querySelectorAll(".popup")
+        const more = document.querySelectorAll(".more")
+        if (isPopup) {
+            element.forEach(k => {
+                k.style.display = "none"
+            });
+            isPopup = false
+        }
     })
 
+    document.querySelectorAll(".more").forEach((element, i) => {
+        element.addEventListener("click", function () {
+            setTimeout(function () {
+                const popup = document.querySelectorAll(`.popup-${i}`)
+                popup.forEach(k => {
+                    k.style.display = "grid"
+                });
+                isPopup = true
+            }), 1
+        })
+    })
+    
     document.querySelectorAll(".popup").forEach((element, i) => {
         element.classList.add(`popup-${i}`)
     })

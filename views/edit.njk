@@ -1,0 +1,24 @@
+{% extends "layout.njk" %}
+{% block content %}
+<link rel="stylesheet" href="../style.css">
+
+<div class="post">    
+    <h1>{{header}}</h1>
+    <form action="/edit" method="post">
+        <textarea type="text" name="message" id="message" required maxlength="130" cols="50" wrap="soft">{{tweet.message}}</textarea>
+        <input type="hidden" name="id" id="id" value="{{tweet.id}}">
+      <label for="message"></label>
+      <button type="submit">Edit</button>
+    </form>
+  </div>
+
+  <script>
+    const textarea = document.getElementById("message");
+    
+    textarea.addEventListener("input", () => {
+      console.log(textarea.style.height)
+      textarea.style.height = "auto"
+      textarea.style.height = (textarea.scrollHeight) + "px";
+    });
+  </script>
+{% endblock %}

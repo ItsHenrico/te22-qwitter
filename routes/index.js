@@ -29,7 +29,8 @@ router.get("/post", async (req, res) => {
     res.render("post.njk", {
         title: "Qwitter - Post",
         header: "Qweet",
-        action: "Post"
+        action: "Post",
+        link: "./post"
     })
 })
 
@@ -37,18 +38,20 @@ router.get("/:id/edit", async (req, res) => {
     const id = req.params.id
     const tweet = await db.all('SELECT tweet.* FROM tweet JOIN user ON user.id = tweet.author_id WHERE tweet.id = ?', id)
     console.log(tweet)
-    res.render("post.njk", {
+    res.render("edit.njk", {
         tweet: tweet[0],
         header: "Edit Qweet",
         action: "Edit",
+        link: "./edit"
     })
 })
 
-router.post("/edit", async (req, res) =>{
+router.post("/edit", async (req, res) =>{ 
     const message = req.body.message
     const id = req.body.id
     const timestamp = new Date()
-    db.run('UPDATE tweet SET message = ?, edited_at = ?, edited = TRUE WHERE id = ?', message, timestamp, id)
+    console.log("edit")
+    await db.run('UPDATE tweet SET message = ?, edited_at = ?, edited = TRUE WHERE id = ?', message, timestamp, id)
     res.redirect("/")
 })
 

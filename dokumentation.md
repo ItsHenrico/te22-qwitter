@@ -32,4 +32,6 @@ Jag har fixat fina knappar till /post, /login och /signup som följer med när j
 ## 2025-04-29
 Idag har jag fixat så /edit och /post har samma njk fil eftersom de var nästan identiska. Sedan har jag fixat lite med hur de ser ut. Textlådan byter storlek utifrån hur mycket text som står i den. Jag fixade också att tiden ljög för mig och var i +0000 trots att den sa att den var +0200.
 ## 2025-04-30
-Jag har fixat så att en grön kvadrat kommer fram när jag klickar på "mer" knappen. Detta fungerar genom att jag ger den en unik klass som varje mer knapp kommer att ändra display värde på. 
+Jag har fixat så att en grön kvadrat kommer fram när jag klickar på "mer" knappen. Detta fungerar genom att jag ger den en unik klass som varje mer knapp kommer att ändra display värde på.
+## 2025-05-05
+Nu fungerar popup saken när man klickar på "mer" knappen. Detta gjorde jag genom att göra så att mer knappen sätter display grid och sedan när man klickar utanför sätter den till display none. 

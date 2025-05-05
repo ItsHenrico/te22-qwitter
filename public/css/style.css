@@ -7,6 +7,8 @@
     --white-text-color: #fff;
     --button-color: #2080ff;
     --button-color-hover: #40a0ff;
+    --overlay-color: #404060;
+    --overlay-hover-color: #606080;
 }
 
 body {
@@ -21,6 +23,7 @@ main {
 }
 
 .header {
+    z-index: 20;
     display: grid;
     position: fixed;
     top: 0;
@@ -87,7 +90,7 @@ main {
     grid-template-columns: 1fr 625px 1fr;
     grid-template-rows: 1fr;
 
-    li {
+    .indTweet {
         border: 1px solid var(--border-color);
         padding-inline: 3rem;
         list-style: none;
@@ -143,7 +146,7 @@ main {
         }
     }
 
-    li:hover {
+    .indTweet:hover {
         background-color: var(--tweet-hover-color);
     }
 
@@ -184,6 +187,7 @@ main {
         font-size: 1rem;
         justify-content: space-between;
         padding-inline: 0;
+        word-wrap: break-word;
     }
 
     ul {
@@ -224,10 +228,18 @@ main {
             justify-self: right;
             grid-template-columns: auto;
 
+            ul {
+                background-color: var(--overlay-color);
+                border-radius: 10px;
+                padding:2px;
+            }
+            
             li {
-                background-color: var(--background-color);
-                padding: 0;
+                background-color: var(--overlay-color);
                 width: 200px;
+                border: none;
+                list-style: none;
+                border-radius: 10px;
                 
                 a {
                     display: grid;
@@ -240,16 +252,17 @@ main {
                         fill: var(--white-text-color);
                         width: 16px;
                         height: 16px;
-                        padding: .3rem;
+                        padding: .5rem;
                     }
                     .interactText {
                         justify-self: left;
                     }
                 }
-
             }
 
-            
+            li:hover {
+                background-color: var(--overlay-hover-color);
+            }
         }
 
         .more {
@@ -266,6 +279,7 @@ main {
 
         .more:hover {
             background-color: var(--hover-color);
+            cursor: pointer;
         }
     }
 }
@@ -275,7 +289,7 @@ main {
     width: 500px;
     margin-inline: auto;
 
-    #post {
+    #post, #message {
         font-family: sans-serif;
         font-size: 1rem;
         border-radius: 15px;
