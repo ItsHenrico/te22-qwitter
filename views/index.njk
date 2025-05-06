@@ -49,6 +49,7 @@
             <div class="topGrid">
                 <h2>{{tweet.name}} <time>• <time id="time" datetime="{{tweet.created_at}}"></time>{%if (tweet.edited) %}
                         (edited <time id="time" datetime="{{tweet.edited_at}}"></time>) {%endif%} </h2></time>
+                {% if (loggedInID.id == tweet.author_id) %}
                 <svg class="more" viewBox="0 -960 960 960">
                     <path
                         d="M480-160q-33 0-56.5-23.5T400-240q0-33 23.5-56.5T480-320q33 0 56.5 23.5T560-240q0 33-23.5 56.5T480-160Zm0-240q-33 0-56.5-23.5T400-480q0-33 23.5-56.5T480-560q33 0 56.5 23.5T560-480q0 33-23.5 56.5T480-400Zm0-240q-33 0-56.5-23.5T400-720q0-33 23.5-56.5T480-800q33 0 56.5 23.5T560-720q0 33-23.5 56.5T480-640Z" />
@@ -65,6 +66,7 @@
                                 </svg> <span class="interactText">Delete</span></a></li>
                     </ul>
                 </div>
+                {% endif %}
             </div>
             <div class="message">
                 {{tweet.message}}

@@ -9,8 +9,13 @@
 <body>
     <h1 class="header">
         <a class="logo" href="/">Qwitter</a>
+        {% if (not loggedIn) %}
         <a class="signup accountButtons" href="/signup">Signup</a>
         <a class="login accountButtons" href="/login">Login</a>
+        {%endif%}
+        {% if (loggedIn) %}
+        <a class="logout accountButtons" href="/logout">Logout</a>
+        {%endif%}
     </h1>
 
     {%block content%}{%endblock%}

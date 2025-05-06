@@ -35,3 +35,5 @@ Idag har jag fixat så /edit och /post har samma njk fil eftersom de var nästan
 Jag har fixat så att en grön kvadrat kommer fram när jag klickar på "mer" knappen. Detta fungerar genom att jag ger den en unik klass som varje mer knapp kommer att ändra display värde på.
 ## 2025-05-05
 Nu fungerar popup saken när man klickar på "mer" knappen. Detta gjorde jag genom att göra så att mer knappen sätter display grid och sedan när man klickar utanför sätter den till display none. 
+## 2025-05-06
+All inloggning från inloggnings projektet har blivit portat till Qwitter. (Ctrl + C, Ctrl + V, plus lite omskrivning av databasen). Det finns även en logga ut knapp. Den sparar också vilken user som är inloggad, så jag kan använda mig av det för att kunna posta från rätt användare och bara visa mer alternativ på Qweets från den inloggade användaren. Den kollar också i /:id/delete och /:id/edit om du är samma användare som lade upp Qweeten även om du navigerar dit manuellt

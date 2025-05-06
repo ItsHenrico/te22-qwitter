@@ -1,16 +1,17 @@
 {% extends "layout.njk" %}
 {% block content %}
-
 <div class="post">
-  <form action="/login" method="POST">
+  <form action="/signup" method="POST">
     <label for="post"></label>
-    <div class="loginGrid">
-      <h1>Login</h1>
+    <div class="signupGrid">
+      <h1>Signup</h1>
       <p>Username:</p>
       <input type="text" name="username" id="username" placeholder="" required maxlength="32">
       <p>Password:</p>
       <input type="password" name="password" id="password" placeholder="" required maxlength="130">
-      <button type="Login" id="login">Login</button>
+      <p>Confirm Password:</p>
+      <input type="password" name="confirm" id="confirm" placeholder="" required maxlength="130">
+      <button type="Login" id="login">Signup</button>
     </div>
   </form>
 </div>
