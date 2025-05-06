@@ -27,11 +27,13 @@ router.get("/", async (req, res) => {
 })
 
 router.post("/post", async (req, res) => {
-    const post = req.body
+    if (req.session.loggedin && req.session.loggedInID.id) {
+        const post = req.body
 
-    db.run('INSERT INTO tweet (message, author_id) VALUES (?, ?)', post.post, req.session.loggedInID.id)
+        db.run('INSERT INTO tweet (message, author_id) VALUES (?, ?)', post.post, req.session.loggedInID.id)
 
-    res.redirect("/")
+        res.redirect("/")
+    }
 })
 
 router.get("/post", async (req, res) => {
@@ -71,10 +73,15 @@ router.get("/:id/edit", async (req, res) => {
 })
 
 router.post("/edit", async (req, res) => {
-    const message = req.body.message
-    const id = req.body.id
-    await db.run('UPDATE tweet SET message = ?, edited_at = (CURRENT_TIMESTAMP), edited = TRUE WHERE id = ?', message, id)
-    res.redirect("/")
+    if (req.session.loggedin) {
+        const message = req.body.message
+        const id = req.body.id
+        const author_id = await db.get("SELECT author_id FROM tweet WHERE id = ?", id)
+        if (req.session.loggedInID.id == author_id.author_id) {
+            await db.run('UPDATE tweet SET message = ?, edited_at = (CURRENT_TIMESTAMP), edited = TRUE WHERE id = ?', message, id)
+            res.redirect("/")
+        }
+    }
 })
 
 router.get("/:id/delete", async (req, res) => {
