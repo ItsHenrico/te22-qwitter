@@ -197,6 +197,7 @@ main {
         justify-content: space-between;
         padding-inline: 0;
         word-wrap: break-word;
+        white-space: pre-wrap;
     }
 
     ul {

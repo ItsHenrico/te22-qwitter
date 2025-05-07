@@ -18,6 +18,14 @@ router.use(session({
 router.get("/", async (req, res) => {
     const tweets = await db.all("SELECT tweet.*, user.name FROM tweet JOIN user ON tweet.author_id = user.id ORDER BY created_at DESC")
     //Fixa qweets med enter och tomma
+    console.log(tweets)
+    tweets.forEach(tweet => {
+        tweet.message = tweet.message.trim()
+        if(tweet.message == ""){
+            tweets.splice(tweets.indexOf(tweet), 1)
+        }
+    });
+    console.log(tweets)
     res.render("index.njk", {
         title: "Qwitter",
         tweets: tweets,
@@ -108,16 +116,20 @@ router.get("/login", (req, res) => {
 router.post("/login", async (req, res) => {
     const username = req.body.username
     const SQLpassword = await db.get("SELECT password FROM user WHERE UPPER(name) = UPPER(?)", username)
-    const hashPassword = SQLpassword.password
-    const givenPassword = req.body.password
-    const result = await bcrypt.compare(givenPassword, hashPassword)
-    if (result) {
-        req.session.loggedin = true
-        req.session.loggedInID = await db.get("SELECT id FROM user WHERE UPPER(name) = UPPER(?)", username)
-        res.redirect("/")
-    }
-    if (!result) {
-        res.redirect("/")
+    if (SQLpassword) {
+        const hashPassword = SQLpassword.password
+        const givenPassword = req.body.password
+        const result = await bcrypt.compare(givenPassword, hashPassword)
+        if (result) {
+            req.session.loggedin = true
+            req.session.loggedInID = await db.get("SELECT id FROM user WHERE UPPER(name) = UPPER(?)", username)
+            res.redirect("/")
+        }
+        if (!result) {
+            res.redirect("/login")
+        }
+    } else {
+        res.redirect("/login")
     }
 })
 
