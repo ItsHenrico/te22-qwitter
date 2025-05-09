@@ -17,15 +17,12 @@ router.use(session({
 
 router.get("/", async (req, res) => {
     const tweets = await db.all("SELECT tweet.*, user.name FROM tweet JOIN user ON tweet.author_id = user.id ORDER BY created_at DESC")
-    //Fixa qweets med enter och tomma
-    console.log(tweets)
-    tweets.forEach(tweet => {
+    for (let tweet of tweets) {
         tweet.message = tweet.message.trim()
-        if(tweet.message == ""){
-            tweets.splice(tweets.indexOf(tweet), 1)
+        if (tweet.message == '') {
+            await db.run("DELETE FROM tweet WHERE id = ?", tweet.id)
         }
-    });
-    console.log(tweets)
+    }
     res.render("index.njk", {
         title: "Qwitter",
         tweets: tweets,
@@ -126,10 +123,14 @@ router.post("/login", async (req, res) => {
             res.redirect("/")
         }
         if (!result) {
-            res.redirect("/login")
+            return res.render("login.njk", { 
+                error: "Incorrect password." 
+            })
         }
     } else {
-        res.redirect("/login")
+        return res.render("login.njk", { 
+            error: "Incorrect password." 
+        })
     }
 })
 

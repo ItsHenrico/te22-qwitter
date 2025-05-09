@@ -8,7 +8,8 @@
         timeElements.forEach(timeElement => {
             const date = new Date(timeElement.getAttribute("datetime"));
             const now = new Date();
-            const diffInSeconds = Math.floor((now - date - 7200000) / 1000);
+            const timezoneOffset = (date.getTimezoneOffset() * 60000)
+            const diffInSeconds = Math.floor((now - date + timezoneOffset) / 1000);
             const diffInMinutes = Math.floor(diffInSeconds / 60);
             const diffInHours = Math.floor(diffInMinutes / 60);
             const diffInDays = Math.floor(diffInHours / 24);

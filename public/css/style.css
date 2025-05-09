@@ -57,7 +57,7 @@ main {
         transition: all .25s;
     }
 
-    .login{
+    .login {
         margin-inline: 1rem;
         color: var(--white-text-color);
         background-color: var(--button-color);
@@ -86,7 +86,8 @@ main {
         color: var(--button-color-hover);
     }
 
-    .login:hover, .logout:hover {
+    .login:hover,
+    .logout:hover {
         background-color: var(--button-color-hover);
     }
 }
@@ -168,7 +169,7 @@ main {
 
         a {
             text-decoration: none;
-            color: var(--text-color)
+            color: var(--text-color);
         }
 
         li {
@@ -316,6 +317,7 @@ main {
 
     h1 {
         font-size: 2rem;
+        margin-bottom: .5rem;
     }
 
     button {
@@ -323,7 +325,7 @@ main {
         border: 0;
         padding: 0.5rem;
         padding-inline: 1rem;
-        margin-top: 1rem;
+        margin-top: .25rem;
         font-size: 1rem;
         color: var(--white-text-color);
         background-color: var(--button-color);
@@ -342,7 +344,7 @@ form {
         height: 100vh;
     }
 
-    .signupGrid{
+    .signupGrid {
         grid-template-rows: auto 2rem 5.5rem 2rem 5.5rem 2rem 5.5rem 7.5rem;
     }
 
@@ -350,7 +352,8 @@ form {
         grid-template-rows: auto 2rem 5.5rem 2rem 5.5rem 7.5rem;
     }
 
-    .signupGrid, .loginGrid {
+    .signupGrid,
+    .loginGrid {
         border-radius: 10px;
         margin-inline: auto;
         width: 500px;
@@ -381,9 +384,14 @@ form {
         width: calc(500px - 4rem);
         padding: 1rem;
         border-radius: 10px;
-        transition: background-color 0.25s;
+        transition: all 0.25s ease;
+
     }
     
+    .error {
+        border: #f00 solid 2px;
+    }
+
     #username:hover,
     #password:hover,
     #confirm:hover {
@@ -400,7 +408,8 @@ form {
         outline: none;
         margin-top: 1rem;
         border: none;
-        transition: background-color 0.25s;
+        cursor: pointer;
+        transition: all 0.25s ease;
     }
 
     #login:hover {
