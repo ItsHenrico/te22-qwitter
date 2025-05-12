@@ -16,6 +16,8 @@ router.use(session({
 }))
 
 router.get("/", async (req, res) => {
+    req.session.loggedin = true
+    req.session.loggedInID = { id: 2 }
     const tweets = await db.all("SELECT tweet.*, user.name FROM tweet JOIN user ON tweet.author_id = user.id ORDER BY created_at DESC")
     for (let tweet of tweets) {
         tweet.message = tweet.message.trim()
@@ -107,6 +109,7 @@ router.get("/login", (req, res) => {
     res.render("login.njk", {
         loggedIn: req.session.loggedin,
         loggedInID: req.session.loggedInID,
+        error: null
     })
 })
 
@@ -123,13 +126,13 @@ router.post("/login", async (req, res) => {
             res.redirect("/")
         }
         if (!result) {
-            return res.render("login.njk", { 
-                error: "Incorrect password." 
+            return res.render("login.njk", {
+                error: "Invalid Username or Password"
             })
         }
     } else {
-        return res.render("login.njk", { 
-            error: "Incorrect password." 
+        return res.render("login.njk", {
+            error: "Invalid Username or Password"
         })
     }
 })
@@ -144,6 +147,7 @@ router.get("/signup", (req, res) => {
     res.render("signup.njk", {
         loggedIn: req.session.loggedin,
         loggedInID: req.session.loggedInID,
+        error: null,
     })
 })
 
@@ -151,9 +155,13 @@ router.post("/signup", async (req, res) => {
     const [a] = await db.all('SELECT EXISTS(SELECT 1 FROM user WHERE name = ?) AS bool', req.body.username)
     const usernameExists = a.bool
     if (req.body.password != req.body.confirm) {
-        res.redirect("/signup")
+        return res.render("signup.njk", {
+            error: "Password don't match"
+        })
     } else if (usernameExists == 1) {
-        res.redirect("/signup")
+        return res.render("signup.njk", {
+            error: "Username already exists"
+        })
     } else {
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
         await db.run('INSERT INTO user (name, password) VALUES (?, ?)', [req.body.username, hashedPassword])

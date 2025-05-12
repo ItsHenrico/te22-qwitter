@@ -5,12 +5,23 @@
     <label for="post"></label>
     <div class="signupGrid">
       <h1>Signup</h1>
+      {%if (error)%}
+      <p>Username:</p>
+      <input type="text" name="username" id="username" placeholder="" required maxlength="32" class="error">
+      <p>Password:</p>
+      <input type="password" name="password" id="password" placeholder="" required maxlength="130" class="error">
+      <p>Confirm Password:</p>
+      <input type="password" name="confirm" id="confirm" placeholder="" required maxlength="130" class="error">
+      <div class="incorrectMessage">{{error}}</div>
+      {%else%}
       <p>Username:</p>
       <input type="text" name="username" id="username" placeholder="" required maxlength="32">
       <p>Password:</p>
       <input type="password" name="password" id="password" placeholder="" required maxlength="130">
       <p>Confirm Password:</p>
       <input type="password" name="confirm" id="confirm" placeholder="" required maxlength="130">
+      <div class="incorrectMessage"></div>
+      {%endif%}
       <button type="Login" id="login">Signup</button>
     </div>
   </form>

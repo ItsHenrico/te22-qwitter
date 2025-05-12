@@ -39,3 +39,5 @@ Nu fungerar popup saken när man klickar på "mer" knappen. Detta gjorde jag gen
 All inloggning från inloggnings projektet har blivit portat till Qwitter. (Ctrl + C, Ctrl + V, plus lite omskrivning av databasen). Det finns även en logga ut knapp. Den sparar också vilken user som är inloggad, så jag kan använda mig av det för att kunna posta från rätt användare och bara visa mer alternativ på Qweets från den inloggade användaren. Den kollar också i /:id/delete och /:id/edit om du är samma användare som lade upp Qweeten även om du navigerar dit manuellt
 ## 2025-05-06
 Enter fungerar och nästan tomma meddelanden också (trim() hatar mig)
+## 2025-05-12
+Trim() ohatar mig utan anledning. Singup och Login skickar nu med en error om man skriver fel. Den ser nu också bra ut på mobil, förutom att jag inte har en aning om var jag ska ha post knappen.
