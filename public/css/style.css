@@ -424,23 +424,6 @@ form {
         grid-template-columns: 0 100% 0;
     }
 
-    form {
-        .post {
-            width: 100%;
-    
-            .signupGrid,
-            .loginGrid {
-                width: 100%;
-            }
-    
-            #username,
-            #password,
-            #confirm {
-                width: calc(100% - 4rem);
-            } 
-        }
-    }
-
     .post {
         margin-inline: auto;
         width: calc(100% - 2rem);
@@ -448,5 +431,21 @@ form {
         #post {
             max-width: calc(100% - 16px);
         }
+    }
+
+    form {
+        width: 100%;
+
+        .signupGrid,
+        .loginGrid {
+            width: 100%;
+        }
+
+        #username,
+        #password,
+        #confirm {
+            width: calc(100% - 4rem);
+        }
+
     }
 }

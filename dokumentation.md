@@ -41,3 +41,5 @@ All inloggning från inloggnings projektet har blivit portat till Qwitter. (Ctrl
 Enter fungerar och nästan tomma meddelanden också (trim() hatar mig)
 ## 2025-05-12
 Trim() ohatar mig utan anledning. Singup och Login skickar nu med en error om man skriver fel. Den ser nu också bra ut på mobil, förutom att jag inte har en aning om var jag ska ha post knappen.
+## 2025-05-13
+Jag har lagt till validationResults(req) på alla mina .posts
