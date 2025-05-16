@@ -12,10 +12,18 @@
     --overlay-border-color: #8080a0;
 }
 
+@font-face {
+    font-family: 'noto_sansregular';
+    src: url('/NotoSans/notosans-variablefont_wdthwght-webfont.woff2') format('woff2'),
+        url('/NotoSans/notosans-variablefont_wdthwght-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
     margin: 0;
     color: var(--white-text-color);
-    font-family: sans-serif;
+    font-family: 'noto_sansregular', sans-serif;
     background-color: var(--background-color);
 }
 
@@ -76,7 +84,7 @@ main {
     .accountButtons {
         border-radius: 15px;
         padding: 1rem;
-        font-size: 1rem;
+        font-size: .9rem;
         transition: all .25s;
     }
 
@@ -132,13 +140,15 @@ main {
             grid-template-columns: 50px;
             grid-template-rows: 50px;
             display: grid;
+            justify-items: center;
+            align-items: center;
             transition: all .25s;
 
             .postLinkText {
                 color: var(--white-text-color);
-                font-size: 5rem;
-                justify-self: center;
-                align-self: center;
+                font-size: 4.5rem;
+                padding-top: 10px;
+                margin: 0;
             }
         }
 
@@ -185,7 +195,7 @@ main {
     }
 
     .message {
-        font-size: 1rem;
+        font-size: .9rem;
         justify-content: space-between;
         padding-inline: 0;
         word-wrap: break-word;
@@ -200,12 +210,12 @@ main {
 
     time {
         color: var(--text-color);
-        font-size: 1rem;
+        font-size: .9rem;
         font-weight: 100;
     }
 
     h2 {
-        font-size: 1rem;
+        font-size: .9rem;
         margin-top: 0.5rem;
         margin-bottom: 0.5rem;
         justify-self: left;
@@ -285,6 +295,7 @@ main {
     }
 }
 
+
 .post {
     margin-top: 7rem;
     width: 500px;
@@ -292,8 +303,8 @@ main {
 
     #post,
     #message {
-        font-family: sans-serif;
-        font-size: 1rem;
+        font-family: 'noto_sansregular', sans-serif;
+        font-size: .9rem;
         border-radius: 15px;
         border: 1px solid var(--border-color);
         width: calc(500px - 3rem);
@@ -305,7 +316,7 @@ main {
     }
 
     h1 {
-        font-size: 2rem;
+        font-size: 1.8rem;
         margin-bottom: .5rem;
     }
 
@@ -315,7 +326,7 @@ main {
         padding: 0.5rem;
         padding-inline: 1rem;
         margin-top: .25rem;
-        font-size: 1rem;
+        font-size: .9rem;
         color: var(--white-text-color);
         background-color: var(--button-color);
         transition: all 0.25s;
@@ -375,7 +386,7 @@ form {
         background-color: inherit;
         margin-inline: auto;
         margin-top: 1rem;
-        font-size: 1.5rem;
+        font-size: 1.35rem;
         width: calc(500px - 4rem);
         padding: 1rem;
         border-radius: 10px;
@@ -396,7 +407,7 @@ form {
         border-radius: 10px;
         color: var(--white-text-color);
         font-weight: bold;
-        font-size: 1.5rem;
+        font-size: 1.35rem;
         background-color: var(--button-color);
         width: 100%;
         outline: none;

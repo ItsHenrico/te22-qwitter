@@ -8,7 +8,7 @@ import indexRouter from "./routes/index.js"
 const app = express()
 const port = 3000
 
-app.use(express.static("public/css"))
+app.use(express.static("public"))
 
 nunjucks.configure("views", {
     autoescape: true,

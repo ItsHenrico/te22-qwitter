@@ -28,7 +28,7 @@ Alla mina SQL-frågor har en parametisering så det blir svårare att göra SQL 
 
 # Slutprojekt Dokumentation
 ## 2025-04-28
-Jag har fixat fina knappar till /post, /login och /signup som följer med när jag scrollar
+Jag har fixat fina knappar till /post, /login och /signup som följer med när jag scrollar. 
 ## 2025-04-29
 Idag har jag fixat så /edit och /post har samma njk fil eftersom de var nästan identiska. Sedan har jag fixat lite med hur de ser ut. Textlådan byter storlek utifrån hur mycket text som står i den. Jag fixade också att tiden ljög för mig och var i +0000 trots att den sa att den var +0200.
 ## 2025-04-30
@@ -36,10 +36,14 @@ Jag har fixat så att en grön kvadrat kommer fram när jag klickar på "mer" kn
 ## 2025-05-05
 Nu fungerar popup saken när man klickar på "mer" knappen. Detta gjorde jag genom att göra så att mer knappen sätter display grid och sedan när man klickar utanför sätter den till display none. 
 ## 2025-05-06
-All inloggning från inloggnings projektet har blivit portat till Qwitter. (Ctrl + C, Ctrl + V, plus lite omskrivning av databasen). Det finns även en logga ut knapp. Den sparar också vilken user som är inloggad, så jag kan använda mig av det för att kunna posta från rätt användare och bara visa mer alternativ på Qweets från den inloggade användaren. Den kollar också i /:id/delete och /:id/edit om du är samma användare som lade upp Qweeten även om du navigerar dit manuellt
+All inloggning från inloggnings projektet har blivit portat till Qwitter. (Ctrl + C, Ctrl + V, plus lite omskrivning av databasen). Det finns även en logga ut knapp. Den sparar också vilken user som är inloggad, så jag kan använda mig av det för att kunna posta från rätt användare och bara visa mer alternativ på Qweets från den inloggade användaren. Den kollar också i /:id/delete och /:id/edit om du är samma användare som lade upp Qweeten även om du navigerar dit manuellt. 
 ## 2025-05-06
-Enter fungerar och nästan tomma meddelanden också (trim() hatar mig)
+Enter fungerar och nästan tomma meddelanden också (trim() hatar mig). 
 ## 2025-05-12
 Trim() ohatar mig utan anledning. Singup och Login skickar nu med en error om man skriver fel. Den ser nu också bra ut på mobil, förutom att jag inte har en aning om var jag ska ha post knappen.
 ## 2025-05-13
-Jag har lagt till validationResults(req) på alla mina .posts
+Jag har lagt till validationResults(req) på alla mina .posts. 
+## 2025-05-16
+Vem hade kunnat tro att få en font att fungera skulle vara det svåraste problemet att lösa? Den är sämre än default sans-serifen.
+
+# Otrolig titel för det Jens vill ha
