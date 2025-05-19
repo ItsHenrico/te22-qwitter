@@ -23,9 +23,6 @@ Det är samma som delete fast bara för favorites.
 ### Säkerhet
 Alla mina SQL-frågor har en parametisering så det blir svårare att göra SQL injections och XSS. Jag ser också till att validera att användaren inte kan skicka fel sorts data, tom data eller för lång text i HTML formulären. 
 
-
-
-
 # Slutprojekt Dokumentation
 ## 2025-04-28
 Jag har fixat fina knappar till /post, /login och /signup som följer med när jag scrollar. 
@@ -47,3 +44,18 @@ Jag har lagt till validationResults(req) på alla mina .posts.
 Vem hade kunnat tro att få en font att fungera skulle vara det svåraste problemet att lösa? Den är sämre än default sans-serifen.
 
 # Otrolig titel för det Jens vill ha
+## Instruktioner
+Jag hoppas du kan använda en hemsida, det enda kanske är att post knappen försvinner om den inte är bred nog.
+
+## Uppföljning på planering
+Jag har en knapp till alla mina sidor, förutom att post knappen försvinner när den inte är bred nog. Jag tänkte på att flytta in, login, singup, logout och post i en hamburgermeny när den blir för tunn men jag hade inte tid. I övrigt har jag all design som planerat. Jag har gjort så att alla routes från min login finns i mitt Qwitter och fungerar som de ska. Jag har sparat att man är inloggad och vem man är inloggad som i en session och ändrat hårdkodade värden av vem man är inloggad som till att använda värdet i sessionen. Dessa värden används också i nunjucks för att bestämma om det ska vara en login eller logout knapp samt om man ska ha de extra alternativen på ett Qweet. Sedan har jag if-satser som kollar om man är rätt användare om man manuellt navigerar till /:id/delete och /:id/edit. Det finns också linkande kollar för att se till att man är inloggad när man ska posta saker. Jag har inte ändrat min databas och den ser ut exakt som jag sa i planeringen.
+
+Min säkerhet är inte exakt som jag sa i min planering. Jag har det jag sa att jag skulle lägga till i planeringen med att se till att min HTML form inte kan bli för lång. Jag har dock inget som kollar om den är för lång om man bypassar formen och postar utan att gå dit (som Josua fånar sig med). Jag hoppas att det fungerar ändå. Jag har också ? i mina SQL-frågor för att minska risken för SQL-injections. Sedan har jag också använt express validator för att se till att värdena inte är tomma.
+
+## Vad, Hur, Varför
+Jag har gjort Qwitter.
+Jag kodade med kod.
+Det var det jag hade gjort innan och orkade inte komma på något nytt.
+
+## HuR hAr Du TeStAt DiN pRoDuKt?
+Josua sa att den sög, så jag fixade det han sa sög, nu suger den mindre. Jag har också självklart verifierat att funktionerna fungerar när jag gör dem. 

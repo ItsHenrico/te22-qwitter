@@ -19,7 +19,6 @@ router.use(session({
 }))
 
 router.get("/", async (req, res) => {
-    //await db.run("DELETE FROM user WHERE id = ''")
     const tweets = await db.all("SELECT tweet.*, user.name FROM tweet JOIN user ON tweet.author_id = user.id ORDER BY created_at DESC")
     for (let tweet of tweets) {
         tweet.message = tweet.message.trim()
@@ -106,7 +105,6 @@ router.get("/:id/delete", async (req, res) => {
 
         if (req.session.loggedInID.id == author_id.author_id) {
             await db.run('DELETE FROM tweet WHERE id = ?', id)
-            //await db.run('DELETE FROM favorites WHERE tweet_id = ?', id)
         }
     }
 
@@ -190,31 +188,5 @@ router.post("/signup", body('username').trim().notEmpty().escape(), body('passwo
         error: "Please fill out all the fields"
     })
 })
-
-/*router.get("/favorites", async (req, res) => {
-    const [tweets] = await db.run("SELECT tweet.*, user.name FROM tweet JOIN user ON tweet.author_id = user.id JOIN favorites ON favorites.tweet_id = tweet.id ORDER BY tweet.edited_at DESC;")
-
-    res.render("favorites.njk", {
-        title: "Qwitter - Favorites",
-        tweets: tweets
-    })
-})
-
-router.get("/:id/favorite", async (req, res) => {
-    const tweet_id = req.params.id
-    const user_id = 1
-
-    await db.run('INSERT INTO favorites (tweet_id, user_id) VALUES (?, 1)', tweet_id, user_id)
-
-    res.redirect("/")
-})
-
-router.get("/:id/unfavorite", async (req, res) => {
-    const id = req.params.id
-    const user_id = 1
-
-    await db.run('DELETE FROM favorites WHERE tweet_id = ? AND user_id = ?', id, user_id)
-    res.redirect("/favorites")
-})*/
 
 export default router 
